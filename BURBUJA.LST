@@ -1,0 +1,37 @@
+ 0000           CPU "z80.tbl"
+ 0000           HOF "INT8"
+                
+ 0000 3A0010    LD A,(1000H)
+ 0003 FE02      CP 2
+ 0005 FA3200    JP M,eti4
+ 0008 4F        LD C,A
+ 0009 0D        eti5: DEC C
+ 000A 51        LD D,C
+ 000B 0600      LD B,0
+ 000D DD210110  LD IX,1001H
+ 0011 1E00      LD E,0
+ 0013 DD7E00    eti3: LD A, (IX+0)
+ 0016 DDBE01    CP (IX+1)
+ 0019 F23300    JP P,eti2
+ 001C 04        eti1: INC B
+ 001D DD23      INC IX
+ 001F 15        DEC D
+ 0020 7A        LD A,D
+ 0021 FE00      CP 0
+ 0023 C21300    JP NZ,eti3
+ 0026 7B        LD A,E
+ 0027 FE00      CP 0
+ 0029 CA3200    JP Z,eti4
+ 002C 79        LD A,C
+ 002D FE01      CP 1
+ 002F C20900    JP NZ,eti5
+ 0032 76        eti4: HALT
+ 0033 DD6601    eti2: LD H, (IX+1)
+ 0036 DD7400    LD (IX+0),H
+ 0039 DD7701    LD (IX+1),A
+ 003C 1E01      LD E,1
+ 003E 18DC      JR eti1
+ 0000           	END
+001C  ETI1               0033  ETI2               0013  ETI3               
+0032  ETI4               0009  ETI5               
+
