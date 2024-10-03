@@ -2,8 +2,8 @@ CPU "Z80.tbl"
 HOF "INT8"
 
 ;Al final B y C funcionan como banderas:
-;B=1 si se encontró la palabra, B=0 si no se encontro
-;C=1 si la palabra es palindromo, C=0 si no lo es
+      ;B=1 si se encontró la palabra, B=0 si no se encontro
+      ;C=1 si la palabra es palindromo, C=0 si no lo es
 ;1000h el tamaño del primer bloque de codigo
 ;1001h el tamaño del segundo bloque de codigo
 ;1002h donde empieza el primer bloque de codigo
@@ -20,7 +20,7 @@ HOF "INT8"
       LD IX, 1002h
       LD IY, 1010h
 
-encontrar_prim_letra: LD A, C
+EncontrarLetra: LD A, C
       CP 0
       JP Z, fin
       DEC C
@@ -30,19 +30,19 @@ encontrar_prim_letra: LD A, C
       CP H
       JP Z, encontrada
       INC IY
-      JP encontrar_prim_letra
+      JP EncontrarLetra
 encontrada: PUSH IY
-verificar_palabra: DEC B
+VerificarPalabra: DEC B
       LD A, 0
       CP B
-      JP Z, palindromo
+      JP Z, Palindromo
       INC IY
       INC IX
       LD A, (IX+0)
       LD H, A
       LD A, (IY+0)
       CP H
-      JP Z, verificar_palabra
+      JP Z, VerificarPalabra
       JP falso
 
 falso: POP IY
@@ -50,11 +50,18 @@ falso: POP IY
       LD IX, 1002h
       LD A, (1000h)
       LD B, A
-      JP encontrar_prim_letra
+      JP EncontrarLetra
 
 Palindromo: 
       LD HL, 1002H   ; Dirección de inicio de la palabra
-      LD DE, 1005H   ; Direccional del final de la palabra
+      LD DE, HL   ; Direccional del final de la palabra
+      LD A, (1000H)
+      DEC A
+Incrementar:      
+      INC DE
+      DEC A
+      JP NZ, Incrementar
+      
 ; Inicialización de registros
       LD C, 0        ; 
 
