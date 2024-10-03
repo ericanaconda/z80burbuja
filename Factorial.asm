@@ -1,3 +1,8 @@
+CPU "Z80.tbl"
+HOF "INT8"
+
+; El resultado se guarda en la direccion 1001H
+
       LD A,(1000H) ; Lee el numero
       CP 0
       JP z,CasoParticular  ; Verifica si es 0
