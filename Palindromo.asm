@@ -57,7 +57,7 @@ Palindromo:
       LD DE, HL   ; Direccional del final de la palabra
       LD A, (1000H)
       DEC A
-Incrementar:      
+Incrementar:
       INC DE
       DEC A
       JP NZ, Incrementar
@@ -66,12 +66,10 @@ Incrementar:
       LD C, 0        ; 
 
 SeguirVerificando:
-; Cargar los caracteres apuntados por HL y DE
+; Cargar los caracteres apuntados por HL y DE y compararlos
       LD A, (HL)
       LD B, A
       LD A, (DE)
-
-; Comparar los caracteres
       CP B
       JR NZ, NoPalindromo
 
@@ -86,7 +84,6 @@ SeguirVerificando:
 
     ; Si los punteros no se han cruzado, continuar verificando
       JR SeguirVerificando
-      HALT
 
 ; Si la palabra es un palíndromo
 SiPalindromo:
