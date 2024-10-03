@@ -1,3 +1,5 @@
+; Sanchez Mayen Tristan Qesen
+; Ramirez Valdovinos Eric
 CPU "Z80.tbl"
 HOF "INT8"
 
