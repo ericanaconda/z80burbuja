@@ -55,33 +55,33 @@ falso: POP IY
       JP EncontrarLetra
 
 Palindromo: 
-      LD HL, 1002H   ; Dirección de inicio de la palabra
-      LD DE, HL   ; Direccional del final de la palabra
+      LD HL, 1002H      ; HL guardara la dirección final de la palabra
       LD A, (1000H)
       DEC A
-Incrementar:
-      INC DE
+Incrementar:            ; Proceso para que HL apunte al final de la palabra
+      INC HL
       DEC A
       JP NZ, Incrementar
       
+      LD DE, 1002H      ; DE guardara la dirección inicial de la palabra
 ; Inicialización de registros
       LD C, 0        ; 
 
 SeguirVerificando:
 ; Cargar los caracteres apuntados por HL y DE y compararlos
-      LD A, (HL)
-      LD B, A
       LD A, (DE)
+      LD B, A
+      LD A, (HL)
       CP B
       JR NZ, NoPalindromo
 
 ; Mover los punteros
-      INC HL
-      DEC DE
+      INC DE
+      DEC HL
 
     ; Comprobar si los punteros se han cruzado
-      LD A, E
-      CP L
+      LD A, L
+      CP E
       JP M, SiPalindromo
 
     ; Si los punteros no se han cruzado, continuar verificando
@@ -91,12 +91,20 @@ SeguirVerificando:
 SiPalindromo:
       INC C    ; Establecer el flag en 1
       LD B, 1
+      LD A,B 
+      LD (1000H), A
+      LD A,C
+      LD (1001H), A
       HALT      ; Finalizar el programa
 
 ; Si la palabra no es un palíndromo
 NoPalindromo:
       LD C, 0    ; Establecer el flag en 0
       LD B, 1
+      LD A,B 
+      LD (1000H), A
+      LD A,C
+      LD (1001H), A
       HALT      ; Finalizar el programa
 
 ;Si no se encuentra la palabra
