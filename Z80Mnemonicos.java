@@ -48,6 +48,7 @@ public class Z80Mnemonicos {
             parameterLength.put(0x2E, 1);
             mnemonics.put(0x3E, "LD A, %02X");    
             parameterLength.put(0x3E, 1);
+            
             //LD r,r'
             mnemonics.put(0x48, "LD C, B");
             parameterLength.put(0x48, 1);
@@ -189,9 +190,78 @@ public class Z80Mnemonicos {
             parameterLength.put(0x7E, 1);
 
             //LD (HL),r
+            mnemonics.put(0x70, "LD (HL), B");
+            parameterLength.put(0x70, 1);
+            mnemonics.put(0x71, "LD (HL), C");
+            parameterLength.put(0x71, 1);
+            mnemonics.put(0x72, "LD (HL), D");
+            parameterLength.put(0x72, 1);
+            mnemonics.put(0x73, "LD (HL), E");
+            parameterLength.put(0x73, 1);
+            mnemonics.put(0x74, "LD (HL), H");
+            parameterLength.put(0x74, 1);
+            mnemonics.put(0x75, "LD (HL), L");
+            parameterLength.put(0x75, 1);
+            mnemonics.put(0x77, "LD (HL), A");
+            parameterLength.put(0x77, 1);
+
+            //LD (IX+d),r
+            mnemonics.put(0x70, "LD (IX+d), B");
+            parameterLength.put(0x70, 1);
+            mnemonics.put(0x71, "LD (IX+d), C");
+            parameterLength.put(0x71, 1);
+            mnemonics.put(0x72, "LD (IX+d), D");
+            parameterLength.put(0x72, 1);
+            mnemonics.put(0x73, "LD (IX+d), E");
+            parameterLength.put(0x73, 1);
+            mnemonics.put(0x74, "LD (IX+d), H");
+            parameterLength.put(0x74, 1);
+            mnemonics.put(0x75, "LD (IX+d), L");
+            parameterLength.put(0x75, 1);
+            mnemonics.put(0x77, "LD (IX+d), A");
+            parameterLength.put(0x77, 1);
+
+            //LD (IY+d),r
+            mnemonics.put(0x70, "LD (IY+d), B");
+            parameterLength.put(0x70, 1);
+            mnemonics.put(0x71, "LD (IY+d), C");
+            parameterLength.put(0x71, 1);
+            mnemonics.put(0x72, "LD (IY+d), D");
+            parameterLength.put(0x72, 1);
+            mnemonics.put(0x73, "LD (IY+d), E");
+            parameterLength.put(0x73, 1);
+            mnemonics.put(0x74, "LD (IY+d), H");
+            parameterLength.put(0x74, 1);
+            mnemonics.put(0x75, "LD (IY+d), L");
+            parameterLength.put(0x75, 1);
+            mnemonics.put(0x77, "LD (IY+d), A");
+            parameterLength.put(0x77, 1);
             
+            mnemonics.put(0x33, "LD (HL), %02X");
+            parameterLength.put(0x33, 1);
+            mnemonics.put(0xDD, "LD (IX+d), %02X");
+            parameterLength.put(0xDD, 1);
+            mnemonics.put(0xFD, "LD (IY+d), %02X");
+            parameterLength.put(0xFD, 1);
+            mnemonics.put(0x0A, "LD A, (BC)");
+            parameterLength.put(0x0A, 1);
+            mnemonics.put(0x1A, "LD A, (DE)");
+            parameterLength.put(0x1A, 1);
+            mnemonics.put(0x02, "LD (BC),A");
+            parameterLength.put(0x02, 1);
+            mnemonics.put(0x12, "LD (DE), A");
+            parameterLength.put(0x12, 1);
+            mnemonics.put(0xED, "LD A, I");
+            parameterLength.put(0xED, 1);
+            mnemonics.put(0xED, "LD A, R");
+            parameterLength.put(0xED, 1);
+            mnemonics.put(0xED, "LD I, A");
+            parameterLength.put(0xED, 1);
+            mnemonics.put(0xED, "LD R, A");
+            parameterLength.put(0xED, 1);
             
             // Instrucciones con 2 bytes de parámetro
+            //LD dd,nn
             mnemonics.put(0x01, "LD BC, %04X");
             parameterLength.put(0x01, 2);
             mnemonics.put(0x11, "LD DE, %04X");
@@ -200,6 +270,11 @@ public class Z80Mnemonicos {
             parameterLength.put(0x21, 2);
             mnemonics.put(0x31, "LD SP, %04X");
             parameterLength.put(0x31, 2);
+
+            mnemonics.put(0x32, "LD IY,%04X");
+            parameterLength.put(0x32, 2);
+            mnemonics.put(0x32, "LD IX,%04X");
+            parameterLength.put(0x32, 2);
             mnemonics.put(0x32, "LD (nn),A");
             parameterLength.put(0x32, 2);
             mnemonics.put(0x3A, "LD A,(nn)");
@@ -208,6 +283,8 @@ public class Z80Mnemonicos {
             parameterLength.put(0xC3, 2);
             mnemonics.put(0xCD, "CALL %04X");
             parameterLength.put(0xCD, 2);
+
+            
     
             // Instrucciones de salto condicional
             mnemonics.put(0x20, "JR NZ, %02X");
